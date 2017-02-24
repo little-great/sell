@@ -29,18 +29,23 @@
                 <div class="price">
                   <span class="now">￥{{ food.price }}</span><span v-show="food.oldPrice" class="old">￥{{ food.oldPrice }}</span>
                 </div>
+                <div class="cartcontrol-wrapper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
+      <shopcart :delivery-price="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
     </div>
 </template>
 
 <script>
   import BScroll from 'better-scroll';
-
+  import shopcart from 'components/shopcart/shopcart';
+  import cartcontrol from '../cartcontrol/cartcontrol.vue';
     const ERR_OK = 0;
     export  default{
         props:{
@@ -115,7 +120,12 @@
                 this.listHeight.push(height);
               }
           }
+      },
+      components:{
+        shopcart,
+        cartcontrol
       }
+
     };
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
@@ -220,5 +230,8 @@
                 text-decoration: line-through
                 font-size: 10px
                 color: rgb(147,153,159)
-
+            .cartcontrol-wrapper
+              position: absolute
+              right: 0
+              bottom: 12px
 </style>
