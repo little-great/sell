@@ -44,10 +44,10 @@ apiRoutes.get('/goods',function (req,res) {
   })
 })
 
-apiRoutes.get('/rating',function (req,res) {
+apiRoutes.get('/ratings',function (req,res) {
   res.json({
     errno:0,
-    data:ratings
+    data: ratings
   })
 })
 
